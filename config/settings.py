@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'apps_module.membership',
+    'whitenoise',
 ]
 
 MIDDLEWARE = [
@@ -141,3 +142,6 @@ STATICFILES_DIRS = (
     ('images', os.path.join(STATIC_ROOT, 'images')),
     # os.path.join(BASE_DIR, "static", "our_static"),
 )
+
+
+STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
