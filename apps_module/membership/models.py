@@ -1,13 +1,47 @@
 from django.db import models
-
+from datetime import date
+from decimal import *
 # Create your models here.
 GENDER = (
     ('male', 'Male'),
     ('female', 'Female'),
 )
 
+TEMPS_TENS = (
+    (0, 0),
+    (30, 3),
+)
+
+TEMPS_ONES = (
+    (0, 0),
+    (1, 1),
+    (2, 2),
+    (3, 3),
+    (4, 4),
+    (5, 5),
+    (6, 6),
+    (7, 7),
+    (8, 8),
+    (9, 9),
+)
+
+TEMPS_DECIMALS = (
+    (0, 0),
+    (1, 1),
+    (2, 2),
+    (3, 3),
+    (4, 4),
+    (5, 5),
+    (6, 6),
+    (7, 7),
+    (8, 8),
+    (9, 9),
+)
+
+
 class Member(models.Model):
-    member_id = models.CharField(max_length=20, unique=True)
+    member_id = models.IntegerField(
+        unique=True, default=1001, help_text='Auto generated, do not change!', primary_key=True)
     first_name = models.CharField(max_length=100)
     middle_name = models.CharField(max_length=100, null=True, blank=True)
     last_name = models.CharField(max_length=100)
@@ -18,7 +52,47 @@ class Member(models.Model):
     date_updated = models.DateTimeField(auto_now=True)
 
     def __str__(self):
-        return str(self.first_name + " " + self.last_name)
+        return str(self.member_id) + " - " + self.last_name + " " + self.first_name
+
+    def get_member_id(self):
+        return self.member_id
+
+    # def save(self, *args, **kwargs):
+    #     try:
+    #         self.member_id = int(Member.objects.order_by(
+    #             'member_id').last().member_id) + 1
+    #     except Exception as e:
+    #         self.member_id = 1001
+
+    #         print(f'Error {e}')
+    #     super(Member, self).save(*args, **kwargs)
+
+
+class Attendance(models.Model):
+    date = models.DateField(default=date.today)
+    member = models.ForeignKey(Member, on_delete=models.CASCADE)
+    present = models.BooleanField(default=True)
+    temp_tens = models.IntegerField(choices=TEMPS_TENS, default=0)
+    temp_ones = models.IntegerField(choices=TEMPS_ONES, default=0)
+    temp_decimals = models.IntegerField(choices=TEMPS_DECIMALS, default=0)
+    temperature = models.FloatField(
+        default=0, null=True, blank=True, editable=False)
+    date_added = models.DateTimeField(auto_now_add=True)
+    date_updated = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return str(self.member)
+
+    def save(self, *args, **kwargs):
+        try:
+            sum_tens_ones = self.temp_tens + self.temp_ones
+            str_temp = str(sum_tens_ones) + "." + str(self.temp_decimals)
+            self.temperature = float(str_temp)
+        except Exception as e:
+            self.temperature = 37.0
+
+            print(f'Error {e}')
+        super(Attendance, self).save(*args, **kwargs)
 
 
 # class MemberProfile(models.Model):
