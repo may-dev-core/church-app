@@ -47,7 +47,7 @@ class Member(models.Model):
     last_name = models.CharField(max_length=100)
     gender = models.CharField(max_length=6, choices=GENDER)
     location = models.CharField(
-        max_length=255, null=True, blank=True, help_text='Auto generated, do not change!')
+        max_length=255, null=True, blank=True, help_text='Town/Residence/House number')
     phone_number_1 = models.CharField(max_length=100, null=True, blank=True)
     phone_number_2 = models.CharField(max_length=100, null=True, blank=True)
     new_comer = models.BooleanField(
