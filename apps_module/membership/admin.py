@@ -13,6 +13,7 @@ class MemberAdmin(admin.ModelAdmin):
         'gender',
         'phone_number_1',
         'phone_number_2',
+        'visitor',
         'date_added',
         'date_updated',
     ]
@@ -28,8 +29,8 @@ class MemberAdmin(admin.ModelAdmin):
     date_hierarchy = 'date_added'
     list_editable = ('first_name', 'middle_name', 'last_name', 'gender', 'phone_number_1',
                      'phone_number_2',)
-    list_filter = ('member_id', 'first_name',
-                   'middle_name', 'last_name', 'date_added')
+    # list_filter = ('member_id', 'first_name',
+    #                'middle_name', 'last_name', 'date_added')
     search_fields = ('member_id', 'first_name',
                      'middle_name', 'last_name',)
     list_per_page = 200

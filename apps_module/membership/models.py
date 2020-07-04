@@ -48,6 +48,7 @@ class Member(models.Model):
     gender = models.CharField(max_length=6, choices=GENDER)
     phone_number_1 = models.CharField(max_length=100, null=True, blank=True)
     phone_number_2 = models.CharField(max_length=100, null=True, blank=True)
+    visitor = models.BooleanField(default=False)
     date_added = models.DateTimeField(auto_now_add=True)
     date_updated = models.DateTimeField(auto_now=True)
 
