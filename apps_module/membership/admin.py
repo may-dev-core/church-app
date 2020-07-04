@@ -13,7 +13,7 @@ class MemberAdmin(admin.ModelAdmin):
         'gender',
         'phone_number_1',
         'phone_number_2',
-        'visitor',
+        'new_comer',
         'date_added',
         'date_updated',
     ]
