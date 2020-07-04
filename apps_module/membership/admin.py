@@ -27,8 +27,8 @@ class MemberAdmin(admin.ModelAdmin):
     # readonly_fields = ('member_id',)
 
     date_hierarchy = 'date_added'
-    list_editable = ('first_name', 'middle_name', 'last_name', 'gender', 'phone_number_1',
-                     'phone_number_2',)
+    # list_editable = ('first_name', 'middle_name', 'last_name', 'gender', 'phone_number_1',
+    #                  'phone_number_2',)
     # list_filter = ('member_id', 'first_name',
     #                'middle_name', 'last_name', 'date_added')
     search_fields = ('member_id', 'first_name',
@@ -79,21 +79,26 @@ class AttendanceAdmin(admin.ModelAdmin):
         # 'temp_decimals',
         'temperature',
         'present',
+        'child',
         'date_added'
     ]
 
     fields = (
         'date',
         'member',
-        'present',
+        # 'present',
         ('temp_tens', 'temp_ones', 'temp_decimals'),
+        'child',
+
 
     )
 
     # readonly_fields = ('temperature',)
     date_hierarchy = 'date'
-    search_fields = ('member__member_id',)
+    search_fields = ('member__member_id',
+                     'member__first_name', 'member__last_name')
     list_filter = ('date',)
+    list_display_links = ['member_id', 'member_name']
 
     # def save_model(self, request, obj, form, change):
     #     super().save_model(request, obj, form, change)

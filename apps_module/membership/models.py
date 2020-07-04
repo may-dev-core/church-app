@@ -46,9 +46,13 @@ class Member(models.Model):
     middle_name = models.CharField(max_length=100, null=True, blank=True)
     last_name = models.CharField(max_length=100)
     gender = models.CharField(max_length=6, choices=GENDER)
+    location = models.CharField(
+        max_length=255, null=True, blank=True, help_text='Auto generated, do not change!')
     phone_number_1 = models.CharField(max_length=100, null=True, blank=True)
     phone_number_2 = models.CharField(max_length=100, null=True, blank=True)
-    new_comer = models.BooleanField(default=False, help_text='For only New members')
+    new_comer = models.BooleanField(
+        default=False, help_text='For only New members')
+
     date_added = models.DateTimeField(auto_now_add=True)
     date_updated = models.DateTimeField(auto_now=True)
 
@@ -73,6 +77,8 @@ class Attendance(models.Model):
     date = models.DateField(default=date.today)
     member = models.ForeignKey(Member, on_delete=models.CASCADE)
     present = models.BooleanField(default=True)
+    child = models.BooleanField(
+        default=False, help_text='For only children')
     temp_tens = models.IntegerField(choices=TEMPS_TENS, default=0)
     temp_ones = models.IntegerField(choices=TEMPS_ONES, default=0)
     temp_decimals = models.IntegerField(choices=TEMPS_DECIMALS, default=0)
