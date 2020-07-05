@@ -19,7 +19,7 @@ class MemberAdmin(admin.ModelAdmin):
         'date_updated',
     ]
 
-    fields = ('member_id',
+    fields = (#'member_id',
               'first_name',
               'last_name',
               'middle_name',
@@ -40,16 +40,16 @@ class MemberAdmin(admin.ModelAdmin):
     list_per_page = 200
     list_max_show_all = 500
 
-    def get_form(self, request, obj=None, **kwargs):
-        try:
-            form = super(MemberAdmin, self).get_form(request, obj, **kwargs)
-            form.base_fields['member_id'].initial = self.member_id = int(Member.objects.order_by(
-                'member_id').last().member_id) + 1
-            form.base_fields['member_id'].editable = False
-        except Exception as identifier:
-            self.member_id = 1001
+    # def get_form(self, request, obj=None, **kwargs):
+    #     try:
+    #         form = super(MemberAdmin, self).get_form(request, obj, **kwargs)
+    #         form.base_fields['member_id'].initial = self.member_id = int(Member.objects.order_by(
+    #             'member_id').last().member_id) + 1
+    #         form.base_fields['member_id'].editable = False
+    #     except Exception as identifier:
+    #         self.member_id = 1001
 
-        return form
+    #     return form
 
     # readonly_fields = ('member_id',)
     # def save_model(self, request, obj, form, change):
@@ -106,6 +106,8 @@ class AttendanceAdmin(admin.ModelAdmin):
     list_display_links = ['member_id', 'member_name']
 
     # def save_model(self, request, obj, form, change):
+    #     self.member_id = int(Member.objects.order_by(
+    #         'member_id').last().member_id) + 1
     #     super().save_model(request, obj, form, change)
 
     class Meta:

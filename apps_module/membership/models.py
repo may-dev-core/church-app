@@ -40,8 +40,8 @@ TEMPS_DECIMALS = (
 
 
 class Member(models.Model):
-    member_id = models.IntegerField(
-        unique=True, default=1001, help_text='Auto generated, do not change!', primary_key=True)
+    member_id = models.AutoField(
+        unique=True, help_text='Auto generated, do not change!', primary_key=True)
     first_name = models.CharField(max_length=100)
     middle_name = models.CharField(max_length=100, null=True, blank=True)
     last_name = models.CharField(max_length=100)
