@@ -11,6 +11,7 @@ class MemberAdmin(admin.ModelAdmin):
         'middle_name',
         'last_name',
         'gender',
+        'location',
         'phone_number_1',
         'phone_number_2',
         'new_comer',
@@ -25,6 +26,7 @@ class MemberAdmin(admin.ModelAdmin):
               'gender',
               'phone_number_1',
               'phone_number_2', 
+              'location',
               'new_comer',)
     # readonly_fields = ('member_id',)
 

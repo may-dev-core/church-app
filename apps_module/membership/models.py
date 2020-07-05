@@ -82,8 +82,7 @@ class Attendance(models.Model):
     temp_tens = models.IntegerField(choices=TEMPS_TENS, default=0)
     temp_ones = models.IntegerField(choices=TEMPS_ONES, default=0)
     temp_decimals = models.IntegerField(choices=TEMPS_DECIMALS, default=0)
-    temperature = models.FloatField(
-        default=0, null=True, blank=True)
+    temperature = models.FloatField(null=True, blank=True)
     date_added = models.DateTimeField(auto_now_add=True)
     date_updated = models.DateTimeField(auto_now=True)
 
