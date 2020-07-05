@@ -39,6 +39,13 @@ TEMPS_DECIMALS = (
 )
 
 
+SERVICE = (
+    ('1', '1st Service'),
+    ('2', '2nd Service'),
+    ('Joint', 'Joint Service'),
+)
+
+
 class Member(models.Model):
     member_id = models.AutoField(
         unique=True, help_text='Auto generated, do not change!', primary_key=True)
@@ -83,6 +90,7 @@ class Attendance(models.Model):
     temp_ones = models.IntegerField(choices=TEMPS_ONES, default=0)
     temp_decimals = models.IntegerField(choices=TEMPS_DECIMALS, default=0)
     temperature = models.FloatField(null=True, blank=True)
+    service = models.CharField(max_length=100, choices=SERVICE, default='1')
     date_added = models.DateTimeField(auto_now_add=True)
     date_updated = models.DateTimeField(auto_now=True)
 

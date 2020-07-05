@@ -82,6 +82,7 @@ class AttendanceAdmin(admin.ModelAdmin):
         # 'temp_tens',
         # 'temp_ones',
         # 'temp_decimals',
+        'service',
         'temperature',
         'present',
         'child',
@@ -90,6 +91,7 @@ class AttendanceAdmin(admin.ModelAdmin):
 
     fields = (
         'date',
+        'service',
         'member',
         'temperature',
         # ('temp_tens', 'temp_ones', 'temp_decimals'),
@@ -109,6 +111,7 @@ class AttendanceAdmin(admin.ModelAdmin):
     #     self.member_id = int(Member.objects.order_by(
     #         'member_id').last().member_id) + 1
     #     super().save_model(request, obj, form, change)
+    
 
     class Meta:
         model = Attendance
