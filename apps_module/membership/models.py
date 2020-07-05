@@ -83,23 +83,23 @@ class Attendance(models.Model):
     temp_ones = models.IntegerField(choices=TEMPS_ONES, default=0)
     temp_decimals = models.IntegerField(choices=TEMPS_DECIMALS, default=0)
     temperature = models.FloatField(
-        default=0, null=True, blank=True, editable=False)
+        default=0, null=True, blank=True)
     date_added = models.DateTimeField(auto_now_add=True)
     date_updated = models.DateTimeField(auto_now=True)
 
     def __str__(self):
         return str(self.member)
 
-    def save(self, *args, **kwargs):
-        try:
-            sum_tens_ones = self.temp_tens + self.temp_ones
-            str_temp = str(sum_tens_ones) + "." + str(self.temp_decimals)
-            self.temperature = float(str_temp)
-        except Exception as e:
-            self.temperature = 37.0
+    # def save(self, *args, **kwargs):
+    #     try:
+    #         sum_tens_ones = self.temp_tens + self.temp_ones
+    #         str_temp = str(sum_tens_ones) + "." + str(self.temp_decimals)
+    #         self.temperature = float(str_temp)
+    #     except Exception as e:
+    #         self.temperature = 37.0
 
-            print(f'Error {e}')
-        super(Attendance, self).save(*args, **kwargs)
+    #         print(f'Error {e}')
+    #     super(Attendance, self).save(*args, **kwargs)
 
 
 # class MemberProfile(models.Model):

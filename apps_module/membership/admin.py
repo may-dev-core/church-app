@@ -18,12 +18,14 @@ class MemberAdmin(admin.ModelAdmin):
         'date_updated',
     ]
 
-    # fields = ('first_name',
-    #           'middle_name',
-    #           'last_name',
-    #           'gender',
-    #           'phone_number_1',
-    #           'phone_number_2', )
+    fields = ('member_id',
+              'first_name',
+              'last_name',
+              'middle_name',
+              'gender',
+              'phone_number_1',
+              'phone_number_2', 
+              'new_comer',)
     # readonly_fields = ('member_id',)
 
     date_hierarchy = 'date_added'
@@ -71,6 +73,7 @@ class AttendanceAdmin(admin.ModelAdmin):
         return f'{obj.member.last_name} {obj.member.first_name}'
 
     list_display = [
+        'id',
         'date',
         'member_id',
         'member_name',
@@ -86,8 +89,8 @@ class AttendanceAdmin(admin.ModelAdmin):
     fields = (
         'date',
         'member',
-        # 'present',
-        ('temp_tens', 'temp_ones', 'temp_decimals'),
+        'temperature',
+        # ('temp_tens', 'temp_ones', 'temp_decimals'),
         'child',
 
 
