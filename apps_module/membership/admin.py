@@ -27,7 +27,7 @@ class MemberAdmin(admin.ModelAdmin):
               'phone_number_1',
               'phone_number_2', 
               'location',
-              'new_comer',)
+              'visitor',)
     # readonly_fields = ('member_id',)
 
     date_hierarchy = 'date_added'
