@@ -36,7 +36,7 @@ class MemberAdmin(admin.ModelAdmin):
     # list_filter = ('member_id', 'first_name',
     #                'middle_name', 'last_name', 'date_added')
     search_fields = ('member_id', 'first_name',
-                     'middle_name', 'last_name',)
+                     'middle_name', 'last_name', 'gender', 'phone_number_1',)
     list_per_page = 200
     list_max_show_all = 500
 
@@ -103,7 +103,7 @@ class AttendanceAdmin(admin.ModelAdmin):
     # readonly_fields = ('temperature',)
     date_hierarchy = 'date'
     search_fields = ('member__member_id',
-                     'member__first_name', 'member__last_name')
+                     'member__first_name', 'member__last_name', 'member__middle_name')
     list_filter = ('date',)
     list_display_links = ['member_id', 'member_name']
 

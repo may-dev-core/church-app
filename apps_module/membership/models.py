@@ -64,7 +64,9 @@ class Member(models.Model):
     date_updated = models.DateTimeField(auto_now=True)
 
     def __str__(self):
-        return str(self.member_id) + " - " + self.last_name + " " + self.first_name
+        if self.middle_name is None:
+            self.middle_name = " "
+        return f'{str(self.member_id)} - {self.first_name} {self.middle_name} {self.last_name}'
 
     def get_member_id(self):
         return self.member_id
