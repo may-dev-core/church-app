@@ -14,7 +14,7 @@ class MemberAdmin(admin.ModelAdmin):
         'location',
         'phone_number_1',
         'phone_number_2',
-        'new_comer',
+        'visitor',
         'date_added',
         'date_updated',
     ]

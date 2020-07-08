@@ -57,8 +57,8 @@ class Member(models.Model):
         max_length=255, null=True, blank=True, help_text='Town/Residence/House number')
     phone_number_1 = models.CharField(max_length=100, null=True, blank=True)
     phone_number_2 = models.CharField(max_length=100, null=True, blank=True)
-    new_comer = models.BooleanField(
-        default=False, help_text='For only New members')
+    visitor = models.BooleanField(
+        default=False, help_text='For only visitors')
 
     date_added = models.DateTimeField(auto_now_add=True)
     date_updated = models.DateTimeField(auto_now=True)
