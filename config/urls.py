@@ -15,10 +15,14 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from apps_module.membership.views import member_data
 
 urlpatterns = [
     path('', admin.site.urls),
     path('admin/', admin.site.urls),
+
+    path('member_data', member_data),
+
 ]
 
 admin.site.site_header = 'G.E.C Mt. Zion Administration'
