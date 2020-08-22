@@ -100,13 +100,13 @@ def attendance_data(request):
 
 
 def save_attendance_data(request):
-    # url = "http://gecapp.herokuapp.com/attendance_data"
-    url = "http://127.0.0.1:9000/attendance_data"
+    url = "http://gecapp.herokuapp.com/attendance_data"
     # url_data = urlopen(url)
     req = requests.get(url)
     req_data = req.json()
 
     print(req_data["data"])
+
 
     count = 0
 
