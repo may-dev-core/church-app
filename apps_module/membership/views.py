@@ -29,6 +29,7 @@ def member_data(request):
     # data = m
 
     result = {
+        'count': len(m_list),
         'status_code': 200,
         'data': m_list
     }
