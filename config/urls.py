@@ -15,13 +15,18 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from apps_module.membership.views import member_data
+from apps_module.membership.views import member_data, save_membership_data, attendance_data, save_attendance_data
 
 urlpatterns = [
     path('', admin.site.urls),
     path('admin/', admin.site.urls),
 
     path('member_data', member_data),
+    path('save_membership_data', save_membership_data),
+    path('attendance_data', attendance_data),
+    path('save_attendance_data', save_attendance_data)
+
+
 
 ]
 
