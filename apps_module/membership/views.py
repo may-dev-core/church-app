@@ -12,7 +12,7 @@ def member_data(request):
     member_obj = Member.objects.all()
     for m in member_obj:
         m_data = {
-            'member_id': m.id,
+            'member_id': m.member_id,
             'first_name': m.first_name,
             'middle_name': m.middle_name,
             'last_name': m.last_name,
